@@ -37,8 +37,11 @@ class TXO:
 
     @classmethod
     def from_tx_hash(cls,tx_hash,n=0):
-        pass
-        #YOUR CODE HERE
+        tx_dict = rpc_connection.getrawtransaction(tx_hash, True)
+        
+        print(tx_dict['vout'][n])
+        
+        TXO(tx_dict['hash'], tx_dict['vout'][n]['n'], tx_dict['vout'][n]['value'], tx_dict['vout'][n]['scriptPubKey']['addresses'][0], tx_dict['time'])
 
     def get_inputs(self,d=1):
         pass
