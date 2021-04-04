@@ -39,7 +39,7 @@ class TXO:
     def from_tx_hash(cls,tx_hash,n=0):
         tx_dict = rpc_connection.getrawtransaction(tx_hash, True)
         
-        TXO(tx_dict['hash'], tx_dict['vout'][n]['n'], tx_dict['vout'][n]['value'], tx_dict['vout'][n]['scriptPubKey']['addresses'][0], tx_dict['time'])
+        return TXO(tx_dict['hash'], tx_dict['vout'][n]['n'], tx_dict['vout'][n]['value'], tx_dict['vout'][n]['scriptPubKey']['addresses'][0], tx_dict['time'])
 
     def get_inputs(self,d=1):
         tx_dict = rpc_connection.getrawtransaction(self.tx_hash, True)
